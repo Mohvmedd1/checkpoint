@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDay Web Task Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <h1 class="logo">MyDay Web</h1>
+            <ul class="nav-links">
+                <li class="nav-item active" data-view="my-day">
+                    <i class="fa-solid fa-sun"></i>
+                    <span>My Day</span>
+                </li>
+                <li class="nav-item" data-view="important">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Important</span>
+                </li>
+                <li class="nav-item" data-view="planned">
+                    <i class="fa-solid fa-calendar-alt"></i>
+                    <span>Planned</span>
+                </li>
+                <li class="nav-item" data-view="all-tasks">
+                    <i class="fa-solid fa-tasks"></i>
+                    <span>All Tasks</span>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content-area">
+            <header class="content-header">
+                <div id="view-title" class="title-container">
+                </div>
+                <button class="add-task-btn" id="open-add-task-modal">
+                    <i class="fa-solid fa-plus"></i> Add Task
+                </button>
+            </header>
+
+            <div class="task-views-container">
+                
+                <div id="my-day-view" class="task-view active-view">
+                    <div class="progress-section">
+                        <span>Today's Progress</span>
+                        <span id="my-day-progress-text">0 of 0 completed</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="my-day-progress-bar"></div>
+                        </div>
+                    </div>
+                    <div id="my-day-tasks" class="task-list"></div>
+                </div>
+
+                <div id="important-view" class="task-view">
+                    <div class="progress-section">
+                        <span>Progress</span>
+                        <span id="important-progress-text">0 of 0 completed</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="important-progress-bar"></div>
+                        </div>
+                    </div>
+                    <div id="important-tasks" class="task-list"></div>
+                </div>
+
+                <div id="planned-view" class="task-view">
+                </div>
+
+                <div id="all-tasks-view" class="task-view">
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="add-task-modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>Add New Task</h2>
+                <button class="close-modal-btn" id="close-add-task-modal">&times;</button>
+            </header>
+            
+            <p class="modal-subtitle">Create a new task with details like priority, tags, and due date</p>
+    
+            <form id="add-task-form">
+                <div class="form-group">
+                    <label for="title">Title <span class="required">*</span></label>
+                    <input type="text" id="title" placeholder="What do you want to do?" required>
+                    <p class="form-group-subtext">Press Enter to add, Shift+Enter to add and stay open</p>
+                </div>
+    
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="3" placeholder="Add more details..."></textarea>
+                </div>
+    
+                <div class="form-group">
+                    <label for="due-date">Due Date</label>
+                    <input type="date" id="due-date" placeholder="mm/dd/yyyy">
+                    <p class="form-group-subtext">Pick a date or choose Today / Tomorrow</p>
+                </div>
+    
+                <div class="form-group">
+                    <label>Priority</label>
+                    <div class="priority-control" id="priority-input">
+                        <button type="button" class="priority-btn" data-priority="Low">Low</button>
+                        <button type="button" class="priority-btn active" data-priority="Medium">Medium</button>
+                        <button type="button" class="priority-btn" data-priority="High">High</button>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input type="text" id="tags" placeholder="Add tags...">
+                    <p class="form-group-subtext">Press Enter to add tag. Max 6 tags.</p>
+                </div>
+    
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option value="To Do">To Do</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
+    
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancel-add-task">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
